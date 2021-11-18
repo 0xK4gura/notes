@@ -22,6 +22,7 @@
 This will cause the application to return all usernames and passwords along with the names and descriptions of products. Examining the database, where you can extract information about the version and structure of the database 
 
 `SELECT * FROM information_schema.tables` -- what DB table exist 
+
 `SELECT * FROM v$version` -- Oracle version 
 ### Blind SQL injection, where the results of a query you control are not returned in the applications' responses 
 ## How to detect SQLi Vuln? 

@@ -1,0 +1,13 @@
+SMB
+`SMBClient //<ip> -U <username>`
+
+SUID
+`find / -user root -perm -4000 -exec ls -ldb {} \; ` -- to find all SUID files
+
+Check a specific localhost port
+`lsof -i:22` 
+
+Hashcat Command
+hashcat -D 2(GPU) -w 3 -m <method> -o output.txt hash.txt dictionary.txt
+
+
