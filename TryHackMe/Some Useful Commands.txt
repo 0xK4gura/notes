@@ -7,6 +7,9 @@ SUID
 Check a specific localhost port
 `lsof -i:22` 
 
+NMAP
+nmap -sS -p- TARGET_IP
+
 Hashcat Command
 hashcat -D 2(GPU) -w 3 -m <method> -o output.txt hash.txt dictionary.txt
 
