@@ -1,4 +1,3 @@
-~~
 
 Setting Up Mona Config File with: `!mona config -set workingfolder c:\mona\%p`
 
