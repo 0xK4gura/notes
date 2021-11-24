@@ -47,16 +47,16 @@ So we repeat that with:-
 
 We would like to achieve this where it mentioned that the shellcode is not modified but still able to cause buffer overflow 
 
-![[Pasted image 20211120202406.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120202406.png)
+![[Pasted image 20211120202406.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120202406.png)
 
 
 Basically we are replacing our payload to our the bytes presented ( the 4 'B' bytes)
 
 Now lets set our address in reverse fashion 
-![[Pasted image 20211120203502.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120203502.png)
+![[Pasted image 20211120203502.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120203502.png)
 
-![[Pasted image 20211120193035.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120193035.png)
+![[Pasted image 20211120193035.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120193035.png)
 
-![[Pasted image 20211120192801.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192801.png)
+![[Pasted image 20211120192801.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192801.png)
 
-![[Pasted image 20211120192910.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192910.png)
+![[Pasted image 20211120192910.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192910.png)
