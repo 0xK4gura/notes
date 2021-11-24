@@ -7,6 +7,12 @@ SUID
 Check a specific localhost port
 `lsof -i:22` `kill PID`
 
+Find
+`find / -type f \( -name <file1> -o -name <file2> -o -name <file3> -o -name <file4> \) 2>>/dev/null`  -- Find for multiple items
+`find / -type f \( -name <file1> -o -name <file2> -o -name <file3> -o -name <file4> \) -exec ls -ilrt {}\; 2>>/dev/null` -- Find and execute ls
+`find / -type f \( -name <file1> -o -name <file2> -o -name <file3> -o -name <file4> \) -exec grep -Eo "([0-9]{1,3}[\.]){3}[0-9]{1,3}" * {} \; 2>>/dev/null` -- find those files, read and grep for IP address
+`find / -perm -u=s -type f 2>/dev/null` -- find SUID
+
 NMAP
 nmap -sS -p- TARGET_IP
 
