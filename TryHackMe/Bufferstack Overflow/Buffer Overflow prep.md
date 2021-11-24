@@ -35,22 +35,28 @@ We have our badchars now. We can create a custom shellcode by isolating them. Th
 
 Since x07 comes after x00 , let us try to exclude it from the payload as well.
 
-![[Pasted image 20211120193237.png]]
+![[Pasted image 20211120193237.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120193237.png)
 
 Our BadChars now still causes overflow, lets to exclude x2e as well.
 
-![[Pasted image 20211120193935.png]]
+![[Pasted image 20211120193935.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120193935.png)
 
 So we repeat that with:-
 
 `!mona bytearray -b "\x00\x07\..."` to set the BadChars `!mona compare -f C:\mona\oscp\bytearray.bin -a <address>` to set the comparison and evaluate the result
 
-We would like to achieve this where it mentioned that the shellcode is not modified but still able to cause buffer overflow ![[Pasted image 20211120202406.png]] Basically we are replacing our payload to our the bytes presented ( the 4 'B' bytes)
+We would like to achieve this where it mentioned that the shellcode is not modified but still able to cause buffer overflow 
 
-Now lets set our address in reverse fashion ![[Pasted image 20211120203502.png]]
+![[Pasted image 20211120202406.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120202406.png)
 
-![[Pasted image 20211120193035.png]]
 
-![[Pasted image 20211120192801.png]]
+Basically we are replacing our payload to our the bytes presented ( the 4 'B' bytes)
 
-![[Pasted image 20211120192910.png]]
+Now lets set our address in reverse fashion 
+![[Pasted image 20211120203502.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120203502.png)
+
+![[Pasted image 20211120193035.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120193035.png)
+
+![[Pasted image 20211120192801.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192801.png)
+
+![[Pasted image 20211120192910.png]] (https://github.com/0xK4gura/notes/blob/main/TryHackMe/Bufferstack%20Overflow/attachments/Pasted%20image%2020211120192910.png)
