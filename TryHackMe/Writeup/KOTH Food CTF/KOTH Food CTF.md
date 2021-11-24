@@ -95,6 +95,7 @@ Welp boom, we are given this credential
 `pasta:pastaisdynamic`
 
 And of course let's try to SSH it again
+
 ![[Pasted image 20211124145445.png]](https://github.com/0xK4gura/notes/blob/main/TryHackMe/Writeup/KOTH%20Food%20CTF/attachments/Pasted%20image%2020211124145445.png)
 Yep, we got it.
 
