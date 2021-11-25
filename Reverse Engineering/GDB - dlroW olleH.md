@@ -18,11 +18,11 @@ Save it as hello.c and then run gcc to compile it:
 
 The first thing we need to do is to to know what kind of file it is with some proper identification. We can do it with `file`
 
-![[Pasted image 20211125100145.png]]
+![[Pasted image 20211125100145.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125100145.png)
 
 Then we can run it with `strings` to get some valuable informations.
 
-![[Pasted image 20211125100218.png]]
+![[Pasted image 20211125100218.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125100218.png)
 
 ```
 /lib64/ld-linux-x86-64.so.2
@@ -37,7 +37,7 @@ Now we can try to observe the program under disassembly. We can achieve this by 
 
 The output of the file in AT&T syntax that we dump would look something like this:
 
-![[Pasted image 20211125100942.png]]
+![[Pasted image 20211125100942.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125100942.png)
 
 The result yields in many function with a total of 15. Disassembly code usually at the `.text` section. And since this is GCC-compiled program, we can skip ahead to the `main` . For GoLang we can go straight to `main.main`
 
@@ -55,7 +55,7 @@ We can run `ltrace`, `strace` and `gdb`
 #### ltrace
 The ltrace output displays readable code of the activity of the program and code 13 is usually recevied as an exit.
 
-![[Pasted image 20211125101917.png]]
+![[Pasted image 20211125101917.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125101917.png)
 
 There are many flags that can be useful when doing ltrace
 
@@ -67,12 +67,12 @@ There are many flags that can be useful when doing ltrace
 
 ~~~
 
-![[Pasted image 20211125102434.png]]
+![[Pasted image 20211125102434.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125102434.png)
 
 #### strace
 Like `ltrace -S`, strace can also logs system calls of the program. 
 
-![[Pasted image 20211125102714.png]]
+![[Pasted image 20211125102714.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125102714.png)
 
 It logs every system call that happened starting from it was executed which is `execve`. `mmap2, mprotect, mbrk` are responsible for memory activities such as allocation, permissions and segment boundary settings. 
 
@@ -90,7 +90,7 @@ Then use gdb to start;
 	
 We can use `disass main` to dump the content of main function. (since I'm using pwndbg extension, it might look different)
 
-![[Pasted image 20211125103522.png]]
+![[Pasted image 20211125103522.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125103522.png)
 
 Let's set a breakpoint with `b \*main`
 
@@ -107,7 +107,7 @@ We can step into (`stepi` or `si`) and step over (`nexti` or `ni`)along with` in
 
 Keep entering until we reached `<puts@plt>`
 
-![[Pasted image 20211125104420.png]]
+![[Pasted image 20211125104420.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125104420.png)
 
 Now, before the `puts` function gets called, we can inspect the values that were pushed into the stack with this command;
 
@@ -115,9 +115,9 @@ Now, before the `puts` function gets called, we can inspect the values that were
 	
 In our case, we can try to dump the content of the address that is `lea` before it gets called by `<puts@plt>`
 
-![[Pasted image 20211125105341.png]]
+![[Pasted image 20211125105341.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125105341.png)
 
 When we step over (`ni`), there will be an output.
 
-![[Pasted image 20211125105539.png]]
+![[Pasted image 20211125105539.png]](https://github.com/0xK4gura/notes/blob/main/Reverse%20Engineering/attachments/Pasted%20image%2020211125105539.png)
 
